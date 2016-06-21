@@ -479,7 +479,7 @@ namespace Horsesoft.Traktor.Models
         }
 
         /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+        [System.Xml.Serialization.XmlAttribute()]
         public string TITLE
         {
             get
@@ -493,7 +493,7 @@ namespace Horsesoft.Traktor.Models
         }
 
         /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
+        [System.Xml.Serialization.XmlAttribute()]
         public string ARTIST
         {
             get
