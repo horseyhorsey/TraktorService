@@ -52,7 +52,7 @@ using Horsesoft.Traktor.Models;
 var serializer = new NmlSerializer();
 
 // Deserialize the Traktor collection
-string nmlPath = @"C:\Users\YourName\Documents\Native Instruments\Traktor 2.11.3\collection.nml";
+string nmlPath = @"C:\Users\YourName\Documents\Native Instruments\Traktor [Version]\collection.nml";
 NML traktorDatabase = await serializer.DeserializeNmlDatabaseAsync(nmlPath);
 
 // Access collection entries
@@ -148,7 +148,7 @@ Contributions are welcome! Please feel free to submit pull requests or open issu
 
 ## License
 
-Copyright © 2016
+Copyright © 2016. License details not specified in the project. Please contact the repository owner for licensing information.
 
 ## About Traktor
 
