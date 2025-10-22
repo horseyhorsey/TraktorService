@@ -21,7 +21,7 @@ namespace Horsesoft.Traktor.Tests
 
             List<MusicFileTag> traktorCollection = await traktorConvert.NmlToMusicFileTagsAsync(COLLECTION);            
 
-            Assert.IsNotNull(traktorCollection);
+            Assert.That(traktorCollection, Is.Not.Null);
 
             Console.WriteLine("Total traktor entrys {0}", traktorCollection.Count);
         }
