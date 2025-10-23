@@ -24,13 +24,21 @@ namespace Horsesoft.Traktor
         {
             if (!File.Exists(nmlPath)) throw new FileNotFoundException();
 
+            using (var stream = File.Open(nmlPath, FileMode.Open, FileAccess.Read))
+            {
+                return SearchDatabaseNml(stream, elementName, searchText);
+            }
+        }
+
+        public IEnumerable<ENTRY> SearchDatabaseNml(Stream nmlStream, SearchElement elementName, string searchText)
+        {
             var entries = new List<ENTRY>();
 
             var watch = new Stopwatch();
 
             watch.Start();
 
-            var document = XDocument.Load(nmlPath);
+            var document = XDocument.Load(nmlStream);
 
             IEnumerable<XElement> documentElements = null;
 

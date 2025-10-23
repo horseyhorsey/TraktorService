@@ -15,11 +15,19 @@ namespace Horsesoft.Traktor
             if (!File.Exists(nmlCollection))                
                     throw new FileNotFoundException();
 
+            using (var stream = File.Open(nmlCollection, FileMode.Open, FileAccess.Read))
+            {
+                return await NmlToMusicFileTagsAsync(stream);
+            }
+        }
+
+        public async Task<List<MusicFileTag>> NmlToMusicFileTagsAsync(Stream nmlStream)
+        {
             var traktorNmlDb = new NmlSerializer();
 
             var traktorEntrys = new List<MusicFileTag>();
 
-            var deserialized = await traktorNmlDb.DeserializeNmlDatabaseAsync(nmlCollection);
+            var deserialized = await traktorNmlDb.DeserializeNmlDatabaseAsync(nmlStream);
 
             try
             {

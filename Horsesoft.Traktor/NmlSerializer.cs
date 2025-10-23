@@ -12,20 +12,26 @@ namespace Horsesoft.Traktor
         {
             if (!File.Exists(fileName)) throw new FileNotFoundException(string.Format("File Not found {0}", fileName));
 
+            using (var stream = File.Open(fileName, FileMode.Open, FileAccess.Read))
+            {
+                return await DeserializeNmlDatabaseAsync(stream);
+            }
+        }
+
+        public async Task<NML> DeserializeNmlDatabaseAsync(Stream stream)
+        {
             NML nmlSerialized = new NML();
 
             await Task.Run(() =>
             {
-                using (var stringReader = File.Open(fileName, FileMode.Open, FileAccess.Read))
-                using (var xmlReader = XmlReader.Create(stringReader))
+                using (var xmlReader = XmlReader.Create(stream))
                 {
                     var serializer = new XmlSerializer(typeof(NML));
 
                     xmlReader.MoveToContent();
 
                     nmlSerialized = (NML)serializer.Deserialize(xmlReader);
-                };
-
+                }
             });
 
             return nmlSerialized;
