@@ -1,5 +1,7 @@
 # TraktorService
 
+[![NuGet](https://img.shields.io/nuget/v/Horsesoft.Traktor.svg)](https://www.nuget.org/packages/Horsesoft.Traktor/)
+
 A C# library for interacting with Native Instruments Traktor's NML database files.
 
 ## Overview
